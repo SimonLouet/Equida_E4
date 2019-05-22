@@ -39,14 +39,11 @@
                         </div>
                     </div>
                     <div class="row">    
-                        <div class="input-field col s1">                 
-                            <input id="choice_1" name="sexe" value="M" type="radio" checked/>   
-                            <label for="choice_1">Male</label>
-                        </div>
-                        <div class="input-field col s1">
-                            <input id="choice_2" name="sexe" value="F" type="radio" />  
-                            <label for="choice_2">Femelle</label>
-                        </div>
+                        <select id="sexe" name="sexe">
+                            <option value='M'>Male</option>
+                            <option value='F'>Femelle</option>
+                        </select>
+                        <label for="sexe">Sexe</label>
                     </div>
                     <div class="row">    
                         <div class="input-field col s12">
@@ -80,9 +77,9 @@
                             <label>Type de cheval :</label>
                         </div>
                     </div>
-                    <button class="btn waves-effect waves-light" type="submit" >Ajouter
-                        <i class="material-icons right">send</i>
-                    </button>
+                    <div class="input-field col s6">  
+                        <button class="btn waves-effect waves-light" type="submit" name="valider">Valider<i class="material-icons right">send</i></button>
+                    </div>
                 </form>
             </div>           
         </div>        

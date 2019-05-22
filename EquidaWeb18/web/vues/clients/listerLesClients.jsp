@@ -18,24 +18,23 @@
 
         <div class="container">
             <div class="row">
+                <h3>Liste des clients</h3>
                 <%
                     ArrayList<Client> lesClients = (ArrayList) request.getAttribute("pLesClients");
                 %>
                 <div class="col s1 offset-s11"> 
-                    <a class="btn-floating btn-large waves-effect waves-light red"href='../ServletClient/ajouterClient'><i class="material-icons">add</i></a>
+                    <a class="btn-floating btn-large waves-effect waves-light"href='../ServletClient/ajouterClient'><i class="material-icons">add</i></a>
                 </div> 
 
                 <table  class="table table-bordered table-striped table-condensed">  
                     <thead>
                         <tr>             
-                            <th>nom</th>
-                            <th>prenom</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
                             <th>Civilité</th>
-                            <th>ville</th>
-                            <th>rue</th>
                             <th>Code Postal</th>
-                            <th>pays</th>
-                            <th>E-mail</th> 
+                            <th>Pays</th>
+                            <th>Mail</th> 
                         </tr>
                     </thead>
                     <tbody>
@@ -59,17 +58,6 @@
                                 }
                                 out.println("</td>");
 
-                                out.println("<td>");
-                                if (unClient.getVille() != null) {
-                                    out.println(unClient.getVille());
-                                }
-                                out.println("</td>");
-
-                                out.println("<td>");
-                                if (unClient.getRue() != null) {
-                                    out.println(unClient.getRue());
-                                }
-                                out.println("</td>");
 
                                 out.println("<td>");
                                 out.println(unClient.getCopos());
@@ -83,9 +71,6 @@
                                 out.println(unClient.getMail());
                                 out.println("</td>");
 
-                                out.println("<td>");
-                                out.println("<a class=\"waves-effect waves-light btn-small\" ><i class=\"material-icons\">delete</i></a>");
-                                out.println("</td>");
 
                                 out.println("<td>");
                                 out.println("<a class=\"waves-effect waves-light btn-small\" href ='../ServletClient/clientModif?id=" + unClient.getId() + "'><i class=\"material-icons\">create</i></a>");
@@ -97,5 +82,6 @@
                 </table>
             </div>
         </div>
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

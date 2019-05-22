@@ -3,7 +3,11 @@
     Created on : 22/06, 16:35:27
     Author     : Zakina
 --%>
-
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.lang.System"%>
+<%@page import="java.util.Date"%>
 <%@page import="modele.Vente"%>
 <%@page import="modele.Compte"%>
 <%@page import="java.util.ArrayList"%>
@@ -30,7 +34,7 @@
                 %>
 
                 <div class="row">
-                    <h3>Présentation</h3>
+                    <h3 >Présentation</h3>
 
                     Créée en 2006, Equida est une société spécialisée dans la vente aux enchères de chevaux de course. 
                     Avec un effectif de vingt-sept personnes, la société a réalisé en 2012 un chiffre d’affaires de 87 millions d’euros.
@@ -38,28 +42,27 @@
                     situés en France et à l’étranger. Pour être plus proche de sa clientèle étrangère, elle s’appuie sur une quinzaine de correspondants
                     répartis dans de nombreux pays comme l’Irlande, la Turquie, ou encore le Japon.
                 </div>
-                <div class="row">
-                    <h3>Vente à venir</h3>
-                </div>
             </div>
             <%                ArrayList<Vente> lesVentes = (ArrayList) request.getAttribute("pLesVentes");
 
             %>
             <!--Affichage des ventes-->
             <div class="row">
+                <h3 >Vente à venir</h3>
                 <table>
                     <thead>
-                    <th>nom</th>
-                    <th>catégorie</th>
-                    <th>date début</th>
-                    <th>date de fin d'inscription</th>
+                    <th>Nom</th>
+                    <th>Catégorie</th>
+                    <th>Date début</th>
                     </thead>
 
                     <tbody>
                         <%                        
-            boolean venteApresDateJour = false;
-
-                            /*for (int i = 0; i < lesVentes.size(); i++) {
+                            boolean venteApresDateJour = false;
+                            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                            SimpleDateFormat formatterfr = new SimpleDateFormat("dd/MM/yyyy");
+                            
+                            for (int i = 0; i < lesVentes.size(); i++) {
                                 Vente uneVente = lesVentes.get(i);
 
                                 //SOUS LE JDK 1.8 
@@ -68,30 +71,12 @@
 
                                 String dateVenteString = uneVente.getDateDebutVente();
 
-                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-                                Date dateVente = sdf.parse(dateVenteString);
-                                Date dateJour = sdf.parse(dateJourString);
+                               
+                                Date dateVente = formatter.parse(dateVenteString);
+                                Date dateJour = formatter.parse(dateJourString);
 
-                                /* TEST SOUS JDK 1.7
-                                 int annees = Calendar.YEAR;
-                                 int mois = Calendar.MONTH;
-                                 int jours = Calendar.DAY_OF_MONTH;
-                        
-                                 System.out.println("local "+annees +" "+ mois+" "+jours);
-                        
-                                 String localCal = Calendar.getInstance().toString();
-                                 System.out.println("localCal "+localCal);
-                        
-
-                                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                        
-                                 Date dateJour= sdf.parse(localCal);
-                                 System.out.println("date Jour "+dateJour);
-                                 Date dateVente= sdf.parse(uneVente.getDateDebutVente());
-                                 System.out.println("date Vente "+dateVente);
-                                 System.out.println("test " + dateVente.after(dateJour));*/
-                                //Ventes affichage
-                                /*if (dateVente.after(dateJour)) {
+                                
+                                if (dateVente.after(dateJour)) {
                                     //affichage d'une vente
                                     out.println("<tr><td>");
                                     out.println(uneVente.getNom());
@@ -102,18 +87,14 @@
                                     out.println("</td>");
 
                                     out.println("<td>");
-                                    out.println(uneVente.getDateDebutVente());
+                                    out.println(formatterfr.format(dateVente));
                                     out.println("</td>");
-
-                                    out.println("<td>");
-                                    out.println(uneVente.getdateDebutInscrip());
-                                    out.println("</td></tr>");
 
                                     //s'il y a une vente pas afficher "pas de vente prévus"
                                     venteApresDateJour = true;
                                 }
                             }
-                            //Pas de Vente prévus*/
+                            //Pas de Vente prévus
                             if (venteApresDateJour == false) {
                                 out.println("<tr><td colspan =4 style='text-align:center';>");
                                 out.println("<h4><strong>Pas de vente prévus</strong></h4>");

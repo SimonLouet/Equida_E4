@@ -20,7 +20,8 @@
     <body>
         <jsp:include page="/vues/MenuNavigation.jsp" />
         <div class="container">
-            <h1>Une nouvelle course</h1>
+            <div class="row">
+            <h3>Ajouter une course</h3>
 
                 <%
                 CourseForm form = (CourseForm)request.getAttribute("form");
@@ -42,40 +43,29 @@
                 }
             %>
             <form class="form-inline" action="courseAjouter" method="POST">
-                <div class="row">
+                
                     <div class="input-field col-s6">
                         <label for="id">Id de la course : (4 caractères)</label>
                         <input id="id" type="text" name="id"  size="10" maxlength="5">
                     </div>
-                </div>
-                    </br>
-                <div class="row">
                     <div class="input-field col-s6">        
                         <label for="nom">Nom de la course : </label>
                         <input id="nom" type="text" name="nom"  size="55" maxlength="50">
                     </div>
-                </div>
-                    </br>
-                <div class="row">
                     <div class="input-field col-s6">        
                         <label for="lieu">Lieu de la course : </label>
                         <input id="lieu" type="text" name="lieu"  size="55" maxlength="50">
                     </div>
-                </div>
-                    </br>
-                <div class="row">
                     <div class="input-field col-s6">        
                         <label for="date">Date de la course : (AAAA-MM-JJ)</label>
-                        <input id="date" type="text" name="date"  size="55" maxlength="50">
+                        <input id="date"  type="date"  name="date" type="text" class="datepicker">
                     </div>
-                </div>
-                    </br>
-                <div class="row">
                     <div class="input-field col-s6">  
-                        <button class="btn waves-effect waves-light" type="submit" name="valider">Ajouter course<i class="material-icons right">send</i></button>
+                        <button class="btn waves-effect waves-light" type="submit" name="valider">Valider<i class="material-icons right">send</i></button>
                     </div>
-                </div>
-            </form>       
+                </form>
+            </div>
         </div>
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

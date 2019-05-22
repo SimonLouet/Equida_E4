@@ -14,10 +14,14 @@
     </jsp:include>
     
     <body>
-        <jsp:include page="/vues/MenuNavigation.jsp" />
         
         <div class="container">
-            <h5>Le mail a bien été envoyé</h5>
-        <div/>
+            <div class="row">
+                <div class="container">
+                    <h5>Le mail a bien été envoyé</h5>
+                </div>
+            </div>
+        </div>
+        <jsp:include page="/vues/MenuNavigation.jsp" />
     </body>
 </html>

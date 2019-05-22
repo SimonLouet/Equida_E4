@@ -19,7 +19,7 @@
         <jsp:include page="/vues/MenuNavigation.jsp" />
         <div class="container">
             <div class="row">
-                <h1>Infos de la categorie de vente</h1>
+                <h3>Infos de la categorie de vente</h3>
 
                  <%
                 CategVente unCategVente = (CategVente)request.getAttribute("pCategVente");
@@ -32,5 +32,6 @@
                 </table>
             </div>
         </div>
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

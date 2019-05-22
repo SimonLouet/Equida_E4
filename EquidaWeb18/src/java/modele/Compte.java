@@ -14,15 +14,17 @@ public class Compte {
     private int id;
     private String login;
     private String mdp;
+    private String role;
     private Client unClient;
-
+    
     public Compte() {
     }
 
-    public Compte(int id, String login, String mdp, Client unClient) {
+    public Compte(int id, String login, String mdp, String role, Client unClient) {
         this.id = id;
         this.login = login;
         this.mdp = mdp;
+        this.role = role;
         this.unClient = unClient;
     }
 
@@ -56,6 +58,20 @@ public class Compte {
 
     public void setUnClient(Client unClient) {
         this.unClient = unClient;
+    }
+
+    /**
+     * @return the role
+     */
+    public String getRole() {
+        return role;
+    }
+
+    /**
+     * @param role the role to set
+     */
+    public void setRole(String role) {
+        this.role = role;
     }
 
 }

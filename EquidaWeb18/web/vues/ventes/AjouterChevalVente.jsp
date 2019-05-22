@@ -6,6 +6,7 @@
 
 <%@page import="formulaires.ChevalVenteForm"%>
 <%@page import="modele.Cheval"%>
+<%@page import="modele.Vente"%>
 <%@page import="modele.TypeCheval"%>
 <%@page import="modele.CategVente"%>
 <%@page import="modele.CategVente"%>
@@ -23,6 +24,7 @@
         <jsp:include page="/vues/MenuNavigation.jsp" />
         <div class="container">
             <div class="row">
+                <h3>Ajouter un lot</h3>
                 <%
                     ChevalVenteForm form = (ChevalVenteForm) request.getAttribute("form");
 
@@ -33,36 +35,42 @@
                     }
                 %>
                 <form class="form-inline" action="AjouterChevalVente" method="POST">
-                    <div class="row">  
-                        <div class="input-field col s12">
-                            <select id='cheval' name="cheval">
-                                <option value="" disabled selected>Choose your option</option>
-                                <%
-                                    ArrayList<Cheval> mesChevaux = (ArrayList) request.getAttribute("pLesChevaux");
-                                    for (int i = 0; i < mesChevaux.size(); i++) {
-                                        Cheval cheval = mesChevaux.get(i);
-                                        out.println("<option value ='" + cheval.getId() + "'>" + cheval.getNom() + "</option>");
+                    <div class="input-field col s12">
+                        <select id='cheval' name="cheval">
+                            <option value="" disabled selected>Choisir un cheval</option>
+                            <%
+                                ArrayList<Cheval> mesChevaux = (ArrayList) request.getAttribute("pLesChevaux");
+                                for (int i = 0; i < mesChevaux.size(); i++) {
+                                    Cheval cheval = mesChevaux.get(i);
+                                    out.println("<option value ='" + cheval.getId() + "'>" + cheval.getNom() + "</option>");
 
-                                    }
-                                %>
-                            </select>
-                            <label>Cheval :</label>
-                        </div>
+                                }
+                            %>
+                        </select>
+                        <label>Cheval :</label>
                     </div>
-                    <div class="row">    
-                        <div class="input-field col s12">
-                            <input placeholder="prixdepart" id="prixdepart" name="prixdepart" type="number" class="validate">
-                            <label for="prixdepart">Prix de départ :</label>
-                        </div>
+                    <div class="input-field col s12">
+                        <select id='vente' name="vente">
+                            <option value="" disabled selected>Choisir une vente</option>
+                            <%
+                                ArrayList<Vente> lesVentes = (ArrayList) request.getAttribute("pLesVentes");
+                                for (int i = 0; i < lesVentes.size(); i++) {
+                                    Vente vente = lesVentes.get(i);
+                                    out.println("<option value ='" + vente.getId() + "'>" + vente.getNom() + "</option>");
+
+                                }
+                            %>
+                        </select>
                     </div>
-                    <div class="row">    
-                        <div class="input-field col s12">
-                            <input name="vente" type="hidden" value='<% out.println(request.getAttribute("codeVente"));%>'>
-                        </div>
+
+                    <div class="input-field col s12">
+                        <input placeholder="prixdepart" id="prixdepart" name="prixdepart" type="number" class="validate">
+                        <label for="prixdepart">Prix de départ :</label>
+                    </div> 
+
+                    <div class="input-field col s6">  
+                        <button class="btn waves-effect waves-light" type="submit" name="valider">Valider<i class="material-icons right">send</i></button>
                     </div>
-                    <button class="btn waves-effect waves-light" type="submit" >Ajouter
-                        <i class="material-icons right">send</i>
-                    </button>
                 </form>
             </div>           
         </div>        

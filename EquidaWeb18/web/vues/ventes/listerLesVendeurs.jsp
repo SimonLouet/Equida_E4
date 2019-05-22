@@ -19,23 +19,25 @@
         <jsp:include page="/vues/MenuNavigation.jsp" />
 
         <div class="container">
-
             <div class="row">
+                <h3>Liste des Vendeur</h3>
                 <%
                     ArrayList<Vendeur> lesVendeurs = (ArrayList) request.getAttribute("pLesVendeurs");
                 %>
+                <div class="col s1 offset-s11"> 
+                    <a class="btn-floating btn-large waves-effect waves-light"href='../ServletClient/ajouterClient'><i class="material-icons">add</i></a>
+                </div> 
+
                 <table  class="table table-bordered table-striped table-condensed">  
                     <thead>
-                        <tr>             
-                            <th>Id</th>
+                        <tr>           
                             <th>Nom</th>
-                            <th>Prenom</th>
+                            <th>Prénom</th>
+                            <th>Civilité</th>
+                            <th>Code Postal</th>
                             <th>Pays</th>
-                            <th>Code Postal</th> 
-                            <th>E-mail</th> 
-                    <br>
-                    <br>
-                    </tr>
+                            <th>Mail</th> 
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -66,6 +68,11 @@
                                     out.println("<td>");
                                     out.println(unVendeur.getMail());
                                     out.println("</td>");
+                                    
+                                    
+                                    out.println("<td>");
+                                    out.println("<a class=\"waves-effect waves-light btn-small\" href ='../ServletClient/clientModif?id=" + unVendeur.getId() + "'><i class=\"material-icons\">create</i></a>");
+                                    out.println("</td></tr>");
                                 }
                             %>
                         </tr>
@@ -73,5 +80,6 @@
                 </table>
             </div>
         </div>
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

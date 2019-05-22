@@ -76,7 +76,9 @@ public class ServletAccueil extends HttpServlet {
             throws ServletException, IOException {
 
         String url = request.getRequestURI();
-
+        Compte compte = (Compte) request.getSession().getAttribute("Compte");
+        
+        
         if (url.equals("/EquidaWeb18/ServletAccueil/Connexion") && request.getSession().getAttribute("Compte") == null) {
             this.getServletContext().getRequestDispatcher("/vues/clientConnexion.jsp").forward(request, response);
         }
@@ -94,9 +96,7 @@ public class ServletAccueil extends HttpServlet {
         }
 
         if (url.equals("/EquidaWeb18/ServletAccueil/Profil")) {
-            Compte compte = (Compte) request.getSession().getAttribute("Compte");
             request.setAttribute("pInformationPersonnelle", compte);
-
             this.getServletContext().getRequestDispatcher("/vues/Profil.jsp").forward(request, response);
         }
     }

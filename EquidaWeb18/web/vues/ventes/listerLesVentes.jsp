@@ -13,6 +13,8 @@
 <%@page import="modele.CategVente"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="modele.Compte"%>
+ <%Compte compte = (Compte)request.getSession().getAttribute("Compte");%>
 <!DOCTYPE html>
 <html>
     <jsp:include page="/vues/Header.jsp" >
@@ -25,8 +27,11 @@
 
         <div class="container">
             <div class="row">
+                <h3 >Liste des ventes</h3>
                 <%
-                    SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+                    
+                    SimpleDateFormat formatter=new SimpleDateFormat("yyy-MM-dd");
+                    SimpleDateFormat formatterfr=new SimpleDateFormat("dd/MM/yyyy");
                     ArrayList<Vente> lesVentes = (ArrayList) request.getAttribute("pLesVentes");
                     ArrayList<CategVente> lesCategVentes = (ArrayList) request.getAttribute("pLesCategVentes");
                 %>
@@ -53,11 +58,17 @@
                         </button>
                     </div>
                 </form>
+                <%
+                    if(compte != null && compte.getRole().equals("ADMIN")){
+                %>
                 <div class="col s1 offset-s4">  
 
-                    <a class="btn-floating btn-large waves-effect waves-light red"href='../ServletVentes/ajouterVente'><i class="material-icons">add</i></a>
+                    <a class="btn-floating btn-large waves-effect waves-light"href='../ServletVentes/ajouterVente'><i class="material-icons">add</i></a>
 
                 </div>  
+                <%
+                    }
+                %>
                 <table  class="table table-bordered table-striped table-condensed">  
                     <thead>
                         <tr>             
@@ -90,20 +101,26 @@
                                 out.println("<td>");
                                 out.println(uneVente.getNom());
                                 out.println("</td>");
-                                                          
+                                
+                                String DateDebutVenteBase = uneVente.getDateDebutVente();
+                                Date DateDebutVente = formatter.parse(DateDebutVenteBase);
+                                DateDebutVenteBase = formatterfr.format(DateDebutVente);
                                 out.println("<td>");
-                                out.println(uneVente.getDateDebutVente());
+                                out.println(DateDebutVenteBase);
                                 out.println("</td>");
                                 
-                                String dateBase = uneVente.getDateDebutVente();
-                                Date date1 = sdf.parse(dateBase);
-                                
+                                String DateFinVenteBase = uneVente.getDateFinVente();
+                                Date DateFinVente = formatter.parse(DateFinVenteBase);
+                                DateFinVenteBase = formatterfr.format(DateFinVente);
                                 out.println("<td>");
-                                out.println(date1);
+                                out.println(DateFinVenteBase);
                                 out.println("</td>");
-                                                              
+                                       
+                                String DateDebutInscripBase = uneVente.getdateDebutInscrip();
+                                Date DebutInscripVente = formatter.parse(DateDebutInscripBase);
+                                DateDebutInscripBase = formatterfr.format(DebutInscripVente);
                                 out.println("<td>");
-                                out.println(uneVente.getdateDebutInscrip());
+                                out.println(DateDebutInscripBase);
                                 out.println("</td>");
                      
                                 out.println("<td>");
@@ -113,27 +130,30 @@
                                 out.println("<td>");
                                 out.println(uneVente.getUneCategVente().getLibelle());
                                 out.println("</td>");
-                           
-                                    
-                                out.println("<td><a href ='../ServletVentes/listerLesClients?codeCat="+ uneVente.getUneCategVente().getCode()+ "'>");
-                                out.println("Lister les clients interessés");
-                                out.println("</td>");
-
-                                out.println("<td><a href ='../ServletVentes/listerLesCourriel?codeVente="+ uneVente.getId()+ "'>");
-                                out.println("Lister les Couriels envoyés");
-                                out.println("</td>");      
-                           
+                                
                                 out.println("<td><a href ='../ServletVentes/listerLesChevaux?codeVente="+ uneVente.getId()+ "'>");
                                 out.println("Lister les Chevaux");
                                 out.println("</td>");
-                           
-                                 out.println("<td>");
-                                 out.println("<a class=\"waves-effect waves-light btn-small\" href ='../ServletVentes/SupprimerUneVente?codeVente="+ uneVente.getId()+ "'><i class=\"material-icons\">delete</i></a>");
-                                 out.println("</td>");
+                                    
+                                if(compte != null && compte.getRole().equals("ADMIN")){
+                                    out.println("<td><a href ='../ServletVentes/listerLesClients?codeCat="+ uneVente.getUneCategVente().getCode()+ "'>");
+                                    out.println("Lister les clients interessés");
+                                    out.println("</td>");
 
-                                 out.println("<td>");
-                                 out.println("<a class=\"waves-effect waves-light btn-small\" href ='../ServletVentes/venteModifier?codeVente="+ uneVente.getId()+ "' ><i class=\"material-icons\">create</i></a>");
-                                 out.println("</td>");
+                                    out.println("<td><a href ='../ServletVentes/listerLesCourriel?codeVente="+ uneVente.getId()+ "'>");
+                                    out.println("Lister les Couriels envoyés");
+                                    out.println("</td>");      
+
+
+
+                                    out.println("<td>");
+                                    out.println("<a class=\"waves-effect waves-light btn-small\" href ='../ServletVentes/SupprimerUneVente?codeVente="+ uneVente.getId()+ "'><i class=\"material-icons\">delete</i></a>");
+                                    out.println("</td>");
+
+                                    out.println("<td>");
+                                    out.println("<a class=\"waves-effect waves-light btn-small\" href ='../ServletVentes/venteModifier?codeVente="+ uneVente.getId()+ "' ><i class=\"material-icons\">create</i></a>");
+                                    out.println("</td>");
+                                }
                             }
                             %>
                         </tr>

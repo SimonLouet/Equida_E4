@@ -19,7 +19,7 @@
         <jsp:include page="/vues/MenuNavigation.jsp" />
         <div class="container">
             <div class="row">
-                <h1>Infos du type de cheval</h1>
+                <h3>Infos sur le type de cheval</h3>
 
                  <%
                 TypeCheval unTypeCheval = (TypeCheval)request.getAttribute("pTypeCheval");
@@ -33,5 +33,6 @@
                 </table>
             </div>
         </div>
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

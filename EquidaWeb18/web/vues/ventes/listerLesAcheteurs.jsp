@@ -18,57 +18,72 @@
         <jsp:include page="/vues/MenuNavigation.jsp" />
 
         <div class="container">
-            <%
-           ArrayList<Acheteur> lesAcheteurs = (ArrayList)request.getAttribute("pLesAcheteurs");
-            %>
-            <table  class="table table-bordered table-striped table-condensed">  
-                <thead>
-                    <tr>             
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Pays</th>
-                        <th>Code Postal</th> 
-                        <th>E-mail</th> 
-                <br>
-                <br>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <%
-                        for(int i = 0; i < lesAcheteurs.size();i++)
-                        {
+            <div class="row">
+                <h3>Liste des Acheteurs</h3>
+                <%
+               ArrayList<Acheteur> lesAcheteurs = (ArrayList)request.getAttribute("pLesAcheteurs");
+                %>
+                <div class="col s1 offset-s11"> 
+                    <a class="btn-floating btn-large waves-effect waves-light"href='../ServletClient/ajouterClient'><i class="material-icons">add</i></a>
+                </div> 
 
-                            Acheteur unAcheteur = lesAcheteurs.get(i);
-                            out.println("<tr><td>");
-                            out.println(unAcheteur.getId());
-                            out.println("</a></td>");
+                <table  class="table table-bordered table-striped table-condensed">   
+                    <thead>
+                        <tr>             
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Civilité</th>
+                            <th>Code Postal</th>
+                            <th>Pays</th>
+                            <th>Mail</th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <%
+                            for(int i = 0; i < lesAcheteurs.size();i++)
+                            {
 
-                             out.println("<td>");
-                             out.println(unAcheteur.getNom());
-                            out.println("</td>");
+                                Acheteur unAcheteur = lesAcheteurs.get(i);
 
-                            out.println("<td>");
-                            out.println(unAcheteur.getPrenom());
-                            out.println("</td>");
+                                out.println("<td>");
+                                out.println(unAcheteur.getNom());
+                                out.println("</td>");
 
-                            out.println("<td>");
-                            out.println(unAcheteur.getUnPays().getNom());
-                            out.println("</td>");
+                                out.println("<td>");
+                                out.println(unAcheteur.getPrenom());
+                                out.println("</td>");
+                                
+                                out.println("<td>");
+                                if (unAcheteur.getTitre() != null) {
+                                    out.println(unAcheteur.getTitre());
+                                }
+                                out.println("</td>");
+                                
+                                out.println("<td>");
+                                out.println(unAcheteur.getUnPays().getNom());
+                                out.println("</td>");
 
-                            out.println("<td>");
-                            out.println(unAcheteur.getCopos());
-                            out.println("</td>");
+                                out.println("<td>");
+                                out.println(unAcheteur.getCopos());
+                                out.println("</td>");
 
-                            out.println("<td>");
-                            out.println(unAcheteur.getMail());
-                            out.println("</td>");
-                        }
-                        %>
-                    </tr>
-                </tbody>
-            </table>
+                                out.println("<td>");
+                                out.println(unAcheteur.getMail());
+                                out.println("</td>");
+                                
+
+                                out.println("<td>");
+                                out.println("<a class=\"waves-effect waves-light btn-small\" href ='../ServletClient/clientModif?id=" + unAcheteur.getId() + "'><i class=\"material-icons\">create</i></a>");
+                                out.println("</td></tr>");
+
+                            }
+                            %>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

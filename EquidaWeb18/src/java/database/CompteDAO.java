@@ -48,6 +48,7 @@ public class CompteDAO {
                 unCompte.setId(rs.getInt("compte.id"));
                 unCompte.setLogin(rs.getString("login"));
                 unCompte.setMdp(rs.getString("mdp"));
+                unCompte.setRole(rs.getString("role"));
                 unCompte.setUnClient(unClient);
             }
 

@@ -25,7 +25,7 @@
         <jsp:include page="/vues/MenuNavigation.jsp" />
         <div class="container">
             <div class="row">
-                <center><h2>Modification d'une Vente</h2></center>
+                <h3>Modifier une Vente</h3>
 
                 <%
                     //Vente vente=(Vente)request.getAttribute("vente");
@@ -40,32 +40,23 @@
                     Vente uneVente = (Vente) request.getAttribute("pVente");
                 %>
                 <form class="form-inline" action="venteModifier?id=<% out.println(uneVente.getId());%>" method="POST">
-                    <div class="row">  
-                        <div class="input-field col s12">
+                    
+                        <div class="input-field col s6">
                             <input value="<% out.println(uneVente.getNom());%>" id="nom" name="nom" type="text"/>
                             <label id="nom" name="nom">NOM :</label>
                         </div>
-                    </div>
-
-                    <div class="row">  
                         <div class="input-field col s12">
                             <input value="<% out.println(uneVente.getDateDebutVente());%>" id="dtdebut" name="dtdebut"   type="text" class="datepicker"/>
                             <label id="dtdebut" name="dtdebut">Date Debut Vente :</label>
                         </div>
-                    </div>
-                    <div class="row">  
-                        <div class="input-field col s12">
+                        <div class="input-field col s6">
                             <input  value="<% out.println(uneVente.getDateFinVente());%>" id="dtfin" name="dtfin" type="text" class="datepicker"/>
                             <label id="dtfin" name="dtfin">Date Fin Vente :</label> 
                         </div>
-                    </div>
-                    <div class="row">  
-                        <div class="input-field col s12">
+                        <div class="input-field col s6">
                             <input value="<%out.println( uneVente.getdateDebutInscrip());%>" id="dtdebutinscrip" name="dtdebutinscrip"   type="text" class="datepicker"/>
                             <label id="dtdebutinscrip" name="dtdebutinscrip">Date Debut Inscription :</label> 
                         </div>
-                    </div>
-                    <div class="row">  
                         <div class="input-field col s12">
                             <select value="<%  out.println(uneVente.getUnLieu().getId());%>" name="idLieu" id="idLieu">
                                 <%
@@ -86,8 +77,6 @@
                             </select>
                             <label id="idLieu" name="idLieu">Lieu :</label>
                         </div>
-                    </div>
-                    <div class="row">  
                         <div class="input-field col s12">
                             <select id="categ" value="<%  out.println(uneVente.getUneCategVente().getCode());%>" name="categVente" id ="categVente">
                                 <%
@@ -108,12 +97,14 @@
                                     }
                                 %>
                             </select>
-                            <label id="categVente" name="categVente">CATEGORIE VENTE :</label>
+                            <label id="categVente" name="categVente">Catégorie vente :</label>
                         </div>
+                    <div class="input-field col s6">  
+                        <button class="btn waves-effect waves-light" type="submit" name="valider">Valider<i class="material-icons right">send</i></button>
                     </div>
-                    <input TYPE="submit" NAME="valider" VALUE="valider"/>
                 </form>
             </div>
         </div>
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

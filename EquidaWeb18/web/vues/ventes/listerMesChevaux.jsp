@@ -22,11 +22,12 @@
 
         <div class="container">
             <div class="row">
+                <h3>Lister mes chevaux</h3>
                 <%
                     ArrayList<Cheval> lesChevaux = (ArrayList) request.getAttribute("pLesChevaux");
                 %>
                 <div class="col s1 offset-s11">  
-                    <a class="btn-floating btn-large waves-effect waves-light red" href='../ServletVentes/chevalAjouter'><i class="material-icons">add</i></a>
+                    <a class="btn-floating btn-large waves-effect waves-light" href='../ServletMesChevaux/chevalAjouter'><i class="material-icons">add</i></a>
                 </div> 
 
                 <table  class="table table-bordered table-striped table-condensed">  
@@ -65,11 +66,11 @@
                                     out.println("</td>");
 
                                     out.println("<td>");
-                                    out.println("<a class=\"waves-effect waves-light btn-small\" href ='../ServletVentes/SupprimerMesChevaux?codeCheval=" + unCheval.getId() + "'><i class=\"material-icons\">delete</i></a>");
+                                    out.println("<a class=\"waves-effect waves-light btn-small\" href ='../ServletMesChevaux/SupprimerMesChevaux?codeCheval=" + unCheval.getId() + "'><i class=\"material-icons\">delete</i></a>");
                                     out.println("</td>");
 
                                     out.println("<td>");
-                                    out.println("<a class=\"waves-effect waves-light btn-small\" href ='../ServletVentes/chevalModif?id=" + unCheval.getId() + "'><i class=\"material-icons\">create</i></a>");
+                                    out.println("<a class=\"waves-effect waves-light btn-small\" href ='../ServletMesChevaux/chevalModif?id=" + unCheval.getId() + "'><i class=\"material-icons\">create</i></a>");
                                     out.println("</td>");
 
 
@@ -84,5 +85,6 @@
                 </table>
             </div>
         </div>
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

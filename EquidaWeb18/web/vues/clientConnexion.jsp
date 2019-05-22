@@ -31,9 +31,9 @@
                 }
                 %>
                 <form class="col s6 push-s3" action="Connexion" method="POST">
-                    <div class="row">
-                        <h2>Connexion</h2>
-                    </div>
+                    
+                    <h2 >Connexion</h2>
+                    
                     <div class="row">
                         <div class="input-field col s12">
                             <input placeholder="Nom de compte" id="login" name="login" type="text" class="validate">
@@ -54,6 +54,6 @@
                 </form>
             </div>
         </div>
-
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

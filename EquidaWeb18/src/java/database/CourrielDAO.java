@@ -127,7 +127,7 @@ public class CourrielDAO {
         
         try
         {
-            requete=connection.prepareStatement("INSERT INTO Courriel (objet, corps, ven_id) VALUES (?, ?, ?)");
+            requete=connection.prepareStatement("INSERT INTO courriel (objet, corps, ven_id) VALUES (?, ?, ?)");
             requete.setString(1, courriel.getObjet());
             requete.setString(2, courriel.getCorps());
             requete.setString(3, Integer.toString(courriel.getUneVente().getId()));

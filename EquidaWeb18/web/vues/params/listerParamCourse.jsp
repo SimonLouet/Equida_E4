@@ -23,8 +23,9 @@
 
         <div class="container">
             <div class="row">
+                <h3> Liste des courses</h3>
                 <div class="col s1 offset-s11">
-                    <a href='../ServletAdministrateur/courseAjouter' class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    <a href='../ServletAdministrateur/courseAjouter' class="btn-floating btn-large waves-effect waves-light "><i class="material-icons">add</i></a>
                 </div>
                 <%
             ArrayList<Course> lesCourses = (ArrayList)request.getAttribute("pLesCourses");
@@ -62,9 +63,6 @@
                                 out.println(uneCourse.getDate());
                                 out.println("</td>");
                            
-                                out.println("<td>");
-                                out.println("<a class=\"waves-effect waves-light btn-small\" href ='../ServletAdministrateur/SupprimerUneCourse?codeCourse="+ uneCourse.getId()+ "'><i class=\"material-icons\">delete</i></a>");
-                                out.println("</td>");
                            
                                 out.println("<td>");
                                 out.println("<a class=\"waves-effect waves-light btn-small\"  href ='#'><i class=\"material-icons\">create</i></a>");
@@ -80,5 +78,6 @@
 
             </div>
         </div>
+                        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

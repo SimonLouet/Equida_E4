@@ -21,14 +21,13 @@
         <jsp:include page="/vues/MenuNavigation.jsp" />
         <div class="container">
             <div class="row">
-                <h3>LISTE LES COURRIELS POUR UNE VENTE</h3>
+                <h3>Courriel pour cette vente</h3>
                 <%
                     ArrayList<Courriel> lesCourriels = (ArrayList) request.getAttribute("pLesCourriels");
                 %>
                 <table  class="table table-bordered table-striped table-condensed">  
                     <thead>
                         <tr>             
-                            <th>id</th>
                             <th>date envoie</th>
                             <th>objet</th>
                             <th>corps</th>
@@ -42,9 +41,6 @@
                                 for (int i = 0; i < lesCourriels.size(); i++) {
 
                                     Courriel unCourriel = lesCourriels.get(i);
-                                    out.println("<tr><td>");
-                                    out.println(unCourriel.getId());
-                                    out.println("</a></td>");
 
                                     out.println("<td>");
                                     out.println(unCourriel.getDate());
@@ -74,7 +70,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <a href ='../ServletVentes/listerLesVentes'> Retour</a>
             </div>
         </div>
     </body>

@@ -25,8 +25,7 @@
         <jsp:include page="/vues/MenuNavigation.jsp" />
         <div class="container">
             <div class="row">
-                <h1>LISTE DES CHEVAUX</h1>
-
+                <h3 >Liste des chevaux</h3>
                 <%
                     ArrayList<Lot> lesLots = (ArrayList) request.getAttribute("pLesLots");
                 %>
@@ -88,8 +87,8 @@
                         
                     </tbody>
                 </table>
-                <a href ='../ServletVentes/listerLesVentes'> Retour</a>
             </div>
         </div>
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

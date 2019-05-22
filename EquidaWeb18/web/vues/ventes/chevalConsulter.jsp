@@ -17,21 +17,19 @@
 
         <div class="container">
             <div class="row">
-
-
                 <%
                     Cheval unCheval = (Cheval) request.getAttribute("pCheval");
                 %>
+                <h3><% out.println(unCheval.getNom());%></h3>
+                
 
-                <img src="<%= request.getContextPath()%>/img/<%= unCheval.getId()%>.jpg">
+                <img src="<%= request.getContextPath()%>/img/<%= unCheval.getId() % 20 %>.jpg">
                 <table class="table table-bordered table-striped table-condensed">
 
-                    <tr><td>ID :</td><td><% out.println(unCheval.getId());%></td></tr>
-                    <tr><td>NOM :</td><td><% out.println(unCheval.getNom());%></td></tr>
-                    <tr><td>SIRE :</td><td><%  out.println(unCheval.getSire());%></td>  </tr>
-                    <tr><td>SEXE :</td><td><%  out.println(unCheval.getSexe());%></td>  </tr>
-                    <tr><td>TYPE SELECTIONE :</td><td><%  out.println(unCheval.getTypeCheval().getLibelle());%></td>  </tr>
-                    <tr><td>MERE :
+                    <tr><td>Sire :</td><td><%  out.println(unCheval.getSire());%></td>  </tr>
+                    <tr><td>Sexe :</td><td><%  out.println(unCheval.getSexe());%></td>  </tr>
+                    <tr><td>Type :</td><td><%  out.println(unCheval.getTypeCheval().getLibelle());%></td>  </tr>
+                    <tr><td>Mère :
                             <%
 
                                 if (unCheval.getMere() != null) {
@@ -51,7 +49,7 @@
                                 }%> 
                         </td></tr>
                         <tr><td>
-                            PERE :<% if (unCheval.getPere() != null) {
+                            Père :<% if (unCheval.getPere() != null) {
 
                                     out.println("<td>");
                                     out.println("<a href ='../ServletVentes/chevalConsulter?id=" + unCheval.getPere().getId() + "'>");
@@ -69,8 +67,8 @@
                                 }%> 
                         </td></tr>
                 </table>
-                <a href ='../ServletAccueil/Accueil'> Retour</a>
             </div>
         </div>  
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

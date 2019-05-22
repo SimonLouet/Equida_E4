@@ -13,13 +13,13 @@
         <jsp:include page="/vues/MenuNavigation.jsp" />
         <div class="container">
             <div class="row">
-                <center><h1>Infos ventes</h1></center>
+                <h3>Infos ventes</h3>
 
                 <%
                     Vente uneVente = (Vente) request.getAttribute("pVente");
                 %>
 
-
+                
                 <table class="table table-bordered table-striped table-condensed">
                     <tr><td>ID :</td><td><% out.println(uneVente.getId());%></td></tr>
                     <tr><td>Nom :</td><td><% out.println(uneVente.getNom());%></td></tr>
@@ -32,6 +32,6 @@
                 </table>
             </div>
         </div>
-            
+        <jsp:include page="/vues/footer.jsp"/>    
     </body>
 </html>

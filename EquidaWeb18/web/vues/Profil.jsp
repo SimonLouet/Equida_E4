@@ -19,6 +19,7 @@
 
         <div class="container">
             <div class="row">
+                <h3 >Profil</h3>
                 <%
                     Compte compte = (Compte) request.getAttribute("pInformationPersonnelle");
                 %>
@@ -48,6 +49,7 @@
                                         out.println("<th>" + compte.getUnClient().getPrenom() + "</th>");
                                     %>
                             </tr>
+                            
                             <%
                                 if (compte.getUnClient().getRue() != null) {
                                     out.println("<tr><th>Adresse :</th>  <th>" + compte.getUnClient().getRue() + "</th></tr>");
@@ -70,11 +72,17 @@
                                     out.println("<tr><th>E-mail :</th>  <th>" + compte.getUnClient().getMail() + "</th></tr>");
                                 }
                             %>
-
+                            <tr>
+                                <th>Role :</th>     
+                                    <%
+                                        out.println("<th>" + compte.getRole() + "</th>");
+                                    %>
+                            </tr>
                             </tbody>
                     </table>
                 </div>
             </div>
         </div>
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

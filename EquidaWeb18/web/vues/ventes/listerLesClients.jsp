@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>LISTE LES CLIENTS POUR UNE CATEGORIE DE VENTE</title>
+        <title>Liste des clients intérréssé par une catégorie de vente </title>
         <jsp:include page="/vues/Header.jsp" >
             <jsp:param name="NomPage" value="Lister les Clients" />
         </jsp:include>
@@ -20,22 +20,20 @@
         <jsp:include page="/vues/MenuNavigation.jsp" />
         <div class="container">
             <div class="row">
-                <h1>LISTE DES CLIENTS POUR UNE CATEGORIE DE VENTE</h1>
+                <h3>Liste des clients intérréssé par une catégorie de vente </h3>
                 <%
                     ArrayList<Client> lesClients = (ArrayList) request.getAttribute("pLesClients");
                 %>
                 <table  class="table table-bordered table-striped table-condensed">  
                     <thead>
                         <tr>             
-                            <th>Id</th>
                             <th>Nom</th>
-                            <th>Prenom</th>
+                            <th>Prénom</th>
+                            <th>Civilité</th>
+                            <th>Code Postal</th>
                             <th>Pays</th>
-                            <th>Code Postal</th> 
-                            <th>E-mail</th>  
-                    <br>
-                    <br>
-                    </tr>
+                            <th>Mail</th> 
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -44,35 +42,44 @@
 
                                     Client unClient = lesClients.get(i);
                                     out.println("<tr><td>");
-                                    out.println(unClient.getId());
-                                    out.println("</a></td>");
+                                out.println(unClient.getNom());
+                                out.println("</td>");
 
-                                    out.println("<td>");
-                                    out.println(unClient.getNom());
-                                    out.println("</td>");
+                                out.println("<td>");
+                                out.println(unClient.getPrenom());
+                                out.println("</td>");
 
-                                    out.println("<td>");
-                                    out.println(unClient.getPrenom());
-                                    out.println("</td>");
+                                out.println("<td>");
+                                if (unClient.getTitre() != null) {
+                                    out.println(unClient.getTitre());
+                                }
+                                out.println("</td>");
 
-                                    out.println("<td>");
-                                    out.println(unClient.getUnPays().getNom());
-                                    out.println("</td>");
 
-                                    out.println("<td>");
-                                    out.println(unClient.getCopos());
-                                    out.println("</td>");
+                                out.println("<td>");
+                                out.println(unClient.getCopos());
+                                out.println("</td>");
 
-                                    out.println("<td>");
-                                    out.println(unClient.getMail());
-                                    out.println("</td>");
+                                out.println("<td>");
+                                out.println(unClient.getUnPays().getNom());
+                                out.println("</td>");
+
+                                out.println("<td>");
+                                out.println(unClient.getMail());
+                                out.println("</td>");
+
+
+                                out.println("<td>");
+                                out.println("<a class=\"waves-effect waves-light btn-small\" href ='../ServletClient/clientModif?id=" + unClient.getId() + "'><i class=\"material-icons\">create</i></a>");
+                                out.println("</td></tr>");
                                 }
                             %>
                         </tr>
                     </tbody>
                 </table>
-                <a href ='../ServletVentes/listerLesVentes'> Retour</a>
             </div>
         </div>
+                        
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

@@ -19,7 +19,7 @@
         <jsp:include page="/vues/MenuNavigation.jsp" />
         <div class="container">
             <div class="row">
-                <h1>Infos du pays</h1>
+                <h3>Infos du pays</h3>
 
                  <%
                 Pays unPays = (Pays)request.getAttribute("pPays");
@@ -32,5 +32,6 @@
                 </table>
             </div>
         </div>
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

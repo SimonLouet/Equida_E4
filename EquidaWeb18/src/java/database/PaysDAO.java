@@ -26,7 +26,7 @@ public class PaysDAO {
     public static ArrayList<Pays> getLesPays(Connection connection) {
         ArrayList<Pays> lesPays = new ArrayList<Pays>();
         try {
-            requete = connection.prepareStatement("select * from pays where archiver != 1");
+            requete = connection.prepareStatement("select * from pays");
             rs = requete.executeQuery();
 
             while (rs.next()) {

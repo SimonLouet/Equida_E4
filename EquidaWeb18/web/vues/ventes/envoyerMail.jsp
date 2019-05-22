@@ -17,55 +17,27 @@
         <jsp:include page="/vues/MenuNavigation.jsp" />
         
         <div class="container">
+            <div class="row">
             <%
                 Courriel courriel = (Courriel)request.getAttribute("pCourriel");
                 
             %>
-            <h3>Envoi du mail</h3>
-            <p><% out.println("Vente du " + courriel.getDate()); %></p>
-            <p><% out.println(courriel.getUneVente().getNom()); %><p>
-            <p>
-            <%
-                 out.println("Objet : " + courriel.getObjet()); 
-                %>
-            </p>
-            <p>
-                <%
-                 out.println("Corps : " + courriel.getCorps()); 
-                %>
-            </p>
-            <p>
-                <%
+            <h3>Mail bien envoyé.</h3>
+            <table class="table table-bordered table-striped table-condensed">
+
+                    <tr><td>Message envoyé le</td><td><% out.println(" " + courriel.getDate()); %></td>  </tr>
+                    <tr><td>Vente :</td><td><% out.println(" " + courriel.getDate()); %></td>  </tr>
+                    <tr><td>Objet :</td><td><%out.println("Objet : " + courriel.getObjet()); %></td>  </tr>
+                    <tr><td>Corps :</td><td><% out.println("Corps : " + courriel.getCorps()); %></td>  </tr>
+                    <tr><td>Pièce jointe :</td><td> <%
                     for (int i=0; i < courriel.getLesPieceJointes().size(); i++){
        
                        out.println("<a href='" + request.getContextPath() + "/upload/" + courriel.getLesPieceJointes().get(i).getChemin() + "'>" + courriel.getLesPieceJointes().get(i).getChemin() + "</a>");      
                     }
-                %>
-            </p>
-           <div class="row">
-               
-                <form  method="post" action="envoyerMail" class="col s12">
-                    
-                    <div class="row">
-                        <div class="input-field col-s6">
-                            <select name="venteId" multiple>
-                                <%
-                                    ArrayList<Client> clients = (ArrayList)request.getAttribute("pClients");
-                                    for (int i=0; i < clients.size(); i++){
-                                        Client client = clients.get(i);
-                                        out.println("<option value ='" + client.getId()+ "'>" + client.getPrenom() + " " + client.getNom()+ "</option>"); 
-
-                                    }
-                                %>
-                            </select>
-                            <label>Liste des clients intéressés par la vente :</label>
-                        </div>
-                    </div>
-                    <div class="input-field col-s6">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Envoyer</button>
-                    </div>        
-                </form>
+                    %></td>  </tr>
+                </table>
             </div>
         </div>
+        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

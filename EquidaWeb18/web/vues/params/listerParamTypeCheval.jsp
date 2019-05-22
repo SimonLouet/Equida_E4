@@ -21,8 +21,10 @@
 
         <div class="container">
             <div class="row">
+                
+                <h3> Liste des types de chevaux</h3>
                 <div class="col s1 offset-s11">
-                    <a href='../ServletAdministrateur/typeChevalAjouter' class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    <a href='../ServletAdministrateur/typeChevalAjouter' class="btn-floating btn-large waves-effect waves-light "><i class="material-icons">add</i></a>
                 </div>
 
                 <%
@@ -56,9 +58,6 @@
                                 out.println(unTypeCheval.getDescription());
                                 out.println("</td>");
 
-                                out.println("<td>");
-                                 out.println("<a class=\"waves-effect waves-light btn-small\" href ='../ServletAdministrateur/SupprimerUnTypeCheval?codeTypeCheval="+ unTypeCheval.getId()+ "'><i class=\"material-icons\">delete</i></a>");
-                                out.println("</td>");
 
                                 out.println("<td>");
                                 out.println("<a class=\"waves-effect waves-light btn-small\"  href ='#'><i class=\"material-icons\">create</i></a>");
@@ -73,5 +72,6 @@
 
             </div>
         </div>
+                        <jsp:include page="/vues/footer.jsp"/>
     </body>
 </html>

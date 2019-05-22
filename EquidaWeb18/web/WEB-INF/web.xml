@@ -22,21 +22,11 @@
     </context-param>
     <context-param>
         <param-name>utilisateurjdbc</param-name>
-    <param-value>root</param-value>
-
-        <param-value>root</param-value>
+	<param-value>phpmyadmin</param-value>
     </context-param>
     <context-param>
         <param-name>motdepassejdbc</param-name>
-
-        <!--<param-value/>-->
-
-
-    <param-value/>
-        
-
-
-        <param-value></param-value>
+        <param-value>root</param-value>
     </context-param>
     <!--  écouteurs -->
     <listener>
@@ -50,16 +40,25 @@
         <servlet-class>servlets.ServletVentes</servlet-class>
     </servlet>
     
+    <servlet>
+        <servlet-name>ServletMesChevaux</servlet-name>
+        <servlet-class>servlets.ServletMesChevaux</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>ServletVentes</servlet-name>
         <url-pattern>/ServletVentes</url-pattern>
     </servlet-mapping>
     
+    <servlet-mapping>
+        <servlet-name>ServletMesChevaux</servlet-name>
+        <url-pattern>/ServletMesChevaux</url-pattern>
+    </servlet-mapping>
     <!--Servlet lister-->
     
     <servlet-mapping>
-        <servlet-name>ServletVentes</servlet-name>
-        <url-pattern>/ServletVentes/listerMesChevaux</url-pattern>
+        <servlet-name>ServletMesChevaux</servlet-name>
+        <url-pattern>/ServletMesChevaux/listerMesChevaux</url-pattern>
     </servlet-mapping>
       
     <servlet-mapping>
@@ -90,15 +89,15 @@
         <url-pattern>/ServletVentes/listerLesCourriel</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ServletVentes</servlet-name>
-        <url-pattern>/ServletVentes/AjouterChevalVente</url-pattern>
+        <servlet-name>ServletMesChevaux</servlet-name>
+        <url-pattern>/ServletMesChevaux/AjouterChevalVente</url-pattern>
     </servlet-mapping>
     
     <!--Servlet supprimer-->
     
     <servlet-mapping>
-        <servlet-name>ServletVentes</servlet-name>
-        <url-pattern>/ServletVentes/SupprimerMesChevaux</url-pattern>
+        <servlet-name>ServletMesChevaux</servlet-name>
+        <url-pattern>/ServletMesChevaux/SupprimerMesChevaux</url-pattern>
     </servlet-mapping>
     
      <servlet-mapping>
@@ -130,8 +129,13 @@
     <!--Servlet ajouter-->
     
     <servlet-mapping>
-        <servlet-name>ServletVentes</servlet-name>
-        <url-pattern>/ServletVentes/chevalAjouter</url-pattern>
+        <servlet-name>ServletMesChevaux</servlet-name>
+        <url-pattern>/ServletMesChevaux/chevalModif</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ServletMesChevaux</servlet-name>
+        <url-pattern>/ServletMesChevaux/chevalAjouter</url-pattern>
     </servlet-mapping>
     
    <!-- Servlet consulter -->   

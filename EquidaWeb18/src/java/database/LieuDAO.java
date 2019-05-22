@@ -21,7 +21,7 @@ public class LieuDAO {
     public static ArrayList<Lieu> getLesLieux(Connection connection) {
         ArrayList<Lieu> lesLieux = new ArrayList<Lieu>();
         try {
-            requete = connection.prepareStatement("select * from lieu where archiver !=1");
+            requete = connection.prepareStatement("select * from lieu ");
             rs = requete.executeQuery();
 
             while (rs.next()) {
